@@ -1,0 +1,12 @@
+[
+    {
+        "appid": "test01",
+        "version": 1,
+        "lastupdate": "2020-01-01 01:01:01"
+    }
+    // ,{
+    //     "appid": "test02",
+    //     "version": 1,
+    //     "lastupdate": "2020-01-01 01:01:01"
+    // }
+]

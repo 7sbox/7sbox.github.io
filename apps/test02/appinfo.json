@@ -1,0 +1,23 @@
+{
+    "appid": "test02",
+    "appname": "浏览器",
+    "version": 1,
+    "icon": "appico.png",
+    "filenum": 4,
+    "ui": "appmain.lua",
+    "reslist": [
+        "01.png",
+        "02.png",
+        "03.png",
+        "04.png"
+    ],
+    "plugins": [
+        "ui", "ksnet", "curl"
+    ],
+    "elements": [
+        "webview2"
+    ],
+    "otherfiles": [
+        [ "WebView2Loader.dll", "WebView2Loader.dll" ]
+    ]
+}
