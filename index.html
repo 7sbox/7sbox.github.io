@@ -1,12 +1,237 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<title>Waiting for the future</title>
-<link rel="stylesheet" href="css/style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Remote Wake Up · 网络唤醒小助手</title>
+<meta name="description" content="Remote Wake Up 是一个面向 Windows 的局域网唤醒工具：一键唤醒电脑、查看在线状态、扫描局域网、设备间互传文件与状态监控。">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-<script src='js/simplex-noise.min.js'></script>
-<script src="js/index.js"></script>
+
+<!-- 装饰性漂浮形状，纯 CSS，不承载信息 -->
+<div class="sky" aria-hidden="true">
+  <span class="cloud c1"></span>
+  <span class="cloud c2"></span>
+  <span class="cloud c3"></span>
+  <span class="blob b1"></span>
+  <span class="blob b2"></span>
+</div>
+
+<header class="hero">
+  <nav class="nav">
+    <a class="brand" href="#top">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 32 32" width="30" height="30">
+          <circle cx="16" cy="16" r="14" fill="#FFB347"/>
+          <circle cx="16" cy="16" r="9" fill="#FF8C42"/>
+          <path d="M12 13a4 4 0 0 1 4-3" stroke="#FFF6E9" stroke-width="2.4" stroke-linecap="round" fill="none"/>
+        </svg>
+      </span>
+      <span class="brand-text">Remote Wake Up</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#features">功能</a></li>
+      <li><a href="#netlink">互联</a></li>
+      <li><a href="#faq">问答</a></li>
+      <li><a class="nav-cta" href="#download">下载</a></li>
+    </ul>
+  </nav>
+
+  <div class="hero-inner" id="top">
+    <div class="hero-copy">
+      <p class="badge">Windows · 免安装 · 原生轻量</p>
+      <h1>让睡着的电脑<br><em>乖乖醒来</em> ⏰</h1>
+      <p class="lede">
+        发一个魔术包，把同一局域网里休眠的机器叫醒——不用跑到它跟前按电源键。
+        还能顺手看看它忙不忙、把它正在放的声音搬到你这里听。
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#download">立即下载</a>
+        <a class="btn btn-ghost" href="#features">看看能做什么</a>
+      </div>
+      <ul class="hero-facts">
+        <li><strong>102</strong><span>字节魔术包</span></li>
+        <li><strong>9</strong><span>种界面语言</span></li>
+        <li><strong>0</strong><span>个运行时依赖</span></li>
+      </ul>
+    </div>
+
+    <div class="hero-art" aria-hidden="true">
+      <!-- 卡通风：一台正在"醒来"的显示器 -->
+      <div class="monitor">
+        <div class="screen">
+          <span class="sun"></span>
+          <span class="zzz">z z z</span>
+          <span class="zzz z2">z</span>
+        </div>
+        <div class="stand"></div>
+        <div class="base"></div>
+      </div>
+      <div class="packet">
+        <span>⚡</span>
+        <p>魔法包</p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<section class="section" id="features">
+  <div class="section-head">
+    <h2>它能做的事</h2>
+    <p>没有花哨的仪表盘，就是把几件小事做顺手。</p>
+  </div>
+
+  <div class="cards">
+    <article class="card">
+      <div class="card-icon warm">🔮</div>
+      <h3>一键唤醒</h3>
+      <p>标准 102 字节魔术包，同时发往目标地址和广播地址，每次 3 份提高送达率。目标解析不到时自动改用广播。</p>
+    </article>
+
+    <article class="card">
+      <div class="card-icon sunny">🟢</div>
+      <h3>在线状态</h3>
+      <p>每 4 秒异步 ICMP 探测一次。绿色在线、灰色离线，不用点开就知道那台机器醒了没有。</p>
+    </article>
+
+    <article class="card">
+      <div class="card-icon peach">🔍</div>
+      <h3>局域网扫描</h3>
+      <p>在编辑窗口扫一遍网段，约 1–2 秒列出在线设备，并用 NetBIOS 取回主机名。双击即可填表。</p>
+    </article>
+
+    <article class="card">
+      <div class="card-icon clay">📁</div>
+      <h3>互通互联</h3>
+      <p>装了同一个程序的设备之间可以直接传文件、看对方的 CPU / 内存 / 网络，甚至把对方的声音搬过来听。</p>
+    </article>
+
+    <article class="card">
+      <div class="card-icon cream">🎨</div>
+      <h3>深色与浅色</h3>
+      <p>标题栏一键切换黑昼两套主题。窗口、菜单、对话框全部自绘，深色不是刷个背景色了事。</p>
+    </article>
+
+    <article class="card">
+      <div class="card-icon sand">🌏</div>
+      <h3>九种语言</h3>
+      <p>简中、繁中、日、韩、西、法、德、葡、俄。默认跟随系统，语言文件缺失时回退内置英文。</p>
+    </article>
+  </div>
+</section>
+
+<section class="section band" id="netlink">
+  <div class="band-inner">
+    <div class="band-copy">
+      <h2>几个小亮点</h2>
+      <ul class="checks">
+        <li><strong>纯原生</strong>：C++20 + Win32 + GDI+ 自绘，不背 Qt、Electron 或 .NET 运行时。</li>
+        <li><strong>配置可读</strong>：JSON 存到 <code>%APPDATA%\RemoteWakeUp\config.json</code>，临时文件 + 原子替换写入。</li>
+        <li><strong>单实例</strong>：重复启动只会唤起已经开着的窗口。</li>
+        <li><strong>托盘常驻</strong>：左键开窗，右键直接唤醒指定主机。</li>
+        <li><strong>高 DPI</strong>：无边框自绘标题栏，缩放不糊。</li>
+      </ul>
+      <a class="btn btn-primary" href="#download">下载体验</a>
+    </div>
+    <div class="band-art" aria-hidden="true">
+      <div class="bubble b-a">传文件 ➜</div>
+      <div class="bubble b-b">状态一览</div>
+      <div class="bubble b-c">听声音 ♫</div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="download">
+  <div class="download-card">
+    <div class="download-copy">
+      <h2>拿去用吧</h2>
+      <p>Windows 10 / 11，64 位。解压即用，不需要安装，不写注册表（除非你开启开机自启）。</p>
+      <div class="download-row">
+        <a class="btn btn-primary btn-lg" href="downloads/RemoteWakeUp-1.0.0-win64.zip" download>
+          下载 v1.0.0（ZIP）
+        </a>
+      </div>
+      <p class="fineprint">
+        包里包含：<code>RemoteWakeUp.exe</code>、9 个语言文件、许可说明与安全说明。
+      </p>
+    </div>
+    <ul class="download-steps">
+      <li><span>1</span>下载并解压到任意目录</li>
+      <li><span>2</span>双击 <code>RemoteWakeUp.exe</code></li>
+      <li><span>3</span>点「添加电脑」，填名称与 MAC</li>
+      <li><span>4</span>选中主机，点「唤醒」</li>
+    </ul>
+  </div>
+
+  <div class="requirements">
+    <h3>动手之前</h3>
+    <p>
+      魔术包只能在<strong>同一局域网</strong>里叫醒设备，而且目标机器需要在 BIOS/固件和网卡驱动里
+      都启用 Wake-on-LAN。第一次用如果没反应，先查这两处，比反复点按钮有用。
+    </p>
+  </div>
+</section>
+
+<section class="section" id="faq">
+  <div class="section-head">
+    <h2>常被问到</h2>
+  </div>
+  <div class="faq">
+    <details>
+      <summary>点了唤醒，但电脑没醒？</summary>
+      <p>
+        按顺序检查三件事：目标机器的网卡驱动里是否勾选了「允许此设备唤醒计算机」；
+        BIOS/固件里是否启用了 Wake-on-LAN；网线是否插着（Wi-Fi 唤醒支持参差不齐）。
+        如果目标填的是域名，解析失败时程序会自动改用广播，此时需要两台机器在同一网段。
+      </p>
+    </details>
+    <details>
+      <summary>能跨网段或者从外网唤醒吗？</summary>
+      <p>
+        魔术包是二层广播，路由器默认不转发。跨网段需要路由器支持定向广播，或者走 VPN 回到同一个局域网。
+        程序本身不做内网穿透。
+      </p>
+    </details>
+    <details>
+      <summary>为什么需要防火墙放行？</summary>
+      <p>
+        设备互联功能会监听 TCP 47810 和组播 UDP 47811。只用唤醒功能的话不需要放行任何东西——
+        唤醒是纯发送，不监听端口。
+      </p>
+    </details>
+    <details>
+      <summary>远程执行脚本安全吗？</summary>
+      <p>
+        默认关闭，而且有三道门：条目必须在白名单里、程序内容必须与锁定的 SHA-256 一致、
+        发起方设备必须在允许列表里。子进程用受限令牌启动并放进 Job Object，超时或退出时整棵树结束。
+        每次尝试（包括被拒绝的）都会写审计日志。
+      </p>
+    </details>
+    <details>
+      <summary>会把我的数据传到哪里去？</summary>
+      <p>
+        不会。程序没有云端，能通信的只有你自己配对过的设备，而且走的是双向 TLS。
+      </p>
+    </details>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <p class="footer-brand">七色软件工作室</p>
+    <p class="footer-note">
+      Remote Wake Up v1.0.0 · C++20 / Win32 / GDI+ · 第三方组件：miniaudio（MIT-0）、libopus（BSD-3）
+    </p>
+    <p class="footer-note dim">
+      唤醒依赖目标机器的硬件与驱动支持，本工具只负责把魔术包发出去。
+    </p>
+  </div>
+</footer>
+
 </body>
 </html>
